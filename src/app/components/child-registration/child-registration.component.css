@@ -1,27 +1,17 @@
-/* styles.scss or styles.css */
+/* child-registration.component.css */
 
-/* styles.scss or styles.css */
-/* Custom CSS for the registration form */
-/* styles.css */
-
-/* user-registration.component.css */
-
-
-
+/* Custom CSS for the child registration form */
 .form-container {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  */
     box-shadow: 0px 0px 5px 1px #999;
     background: #f0f2f5;
-   
     font-weight: 600;
     color: #666;
   }
-  
   
   .form-group {
     margin-bottom: 20px;
@@ -33,6 +23,15 @@
     border-radius: 5px;
     padding: 10px;
     font-size: 16px;
+  }
+  
+  /* Style the select dropdown */
+  .select-control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
   }
   
   /* Style the submit button */

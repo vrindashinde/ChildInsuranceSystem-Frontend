@@ -1,0 +1,76 @@
+<div class="form-container mt-5">
+  <h2 style="text-align: center; margin-bottom: 20px; color: #263859;">Child Registration</h2>
+  <form (ngSubmit)="onSubmit()" #childForm="ngForm">
+    <!-- Child Information -->
+    <div class="form-group">
+      <label for="childName">Child's Name</label>
+      <input type="text" class="form-control" id="childName" [(ngModel)]="child.childName" name="childName" required pattern="^[A-Za-z]{2,50}$">
+      <div *ngIf="childForm.invalid && (childForm.dirty || childForm.touched)">
+      <div *ngIf="childForm.submitted && childForm.controls['childName'].invalid" class="alert alert-danger">
+        <p>Child's Name is required.</p>
+      </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="childDob">Date of Birth</label>
+      <input type="date" class="form-control" id="childDob" [(ngModel)]="child.childDob" name="childDob" required
+        (ngModelChange)="calculateChildAge()">
+        <div *ngIf="childForm.invalid && (childForm.dirty || childForm.touched)">
+        <div *ngIf="childForm.submitted && childForm.controls['childDob'].invalid" class="alert alert-danger">
+        <p>Date of Birth is required.</p>
+      </div>
+      <div *ngIf="childForm.submitted && childAge < 18" class="alert alert-danger">
+        <p>Child must be <= 18 years</p>
+      </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="childUID">Child's Aadhar Number</label>
+      <input type="text" class="form-control" id="childUID" [(ngModel)]="child.childUID" name="childUID" required
+        pattern="^[0-9]{12}$">
+        <div *ngIf="childForm.invalid && (childForm.dirty || childForm.touched)">
+        <div *ngIf="childForm.submitted && childForm.controls['childUID'].invalid" class="alert alert-danger">
+        <p>Child's Aadhar Number is required and should consist of 12 digits.</p>
+      </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="childGender">Child's Gender</label>
+      <select class="form-control" id="childGender" [(ngModel)]="child.childGender" name="childGender" required>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+      <div *ngIf="childForm.invalid && (childForm.dirty || childForm.touched)">
+      <div *ngIf="childForm.submitted && childForm.controls['childGender'].invalid" class="alert alert-danger">
+        <p>Child's Gender is required.</p>
+      </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="relationship">Your Relationship to Child</label>
+      <select class="form-control" id="relationship" [(ngModel)]="child.relationship" name="relationship" required>
+        <option value="Parent">Parent</option>
+        <option value="Guardian">Guardian</option>
+      </select>
+      <div *ngIf="childForm.invalid && (childForm.dirty || childForm.touched)">
+      <div *ngIf="childForm.submitted && childForm.controls['relationship'].invalid" class="alert alert-danger">
+        <p>Your Relationship to Child is required.</p>
+      </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="onSubmit ">Submit</button>
+  </form>
+</div>
+<!-- 
+[disabled]="!childForm.valid || childAge < 18"
+
+(click)="calculateChildAge()"
+
+-->
+  

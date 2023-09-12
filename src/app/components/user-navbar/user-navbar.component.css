@@ -1,0 +1,36 @@
+nav{
+
+    height: 100%;
+    
+}
+
+.side-nav-button{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.side-nav-button:hover{
+    background-color: grey;
+    border-radius: 30%;
+}
+
+.btn {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 10px 14px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10%;
+    position: absolute;
+    right: 20px;
+   
+  }
+
+  .btn:hover {
+    background-color: grey;
+  }
+

@@ -18,6 +18,17 @@ import { AdminGetEnrollmentsComponent } from './components/admin-get-enrollments
 import { AdminViewPaymentsComponent } from './components/admin-view-payments/admin-view-payments.component';
 import { AdminClaimApprovalComponent } from './components/admin-claim-approval/admin-claim-approval.component';
 import { AdminSendReminderComponent } from './components/admin-send-reminder/admin-send-reminder.component';
+import { FormsModule } from '@angular/forms';
+import { ChildRegistrationComponent } from './components/child-registration/child-registration.component';
+import { UserChildrenComponent } from './components/user-children/user-children.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { UserSidebarComponent } from './components/user-sidebar/user-sidebar.component';
+import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
+import { UserNavbarComponent } from './components/user-navbar/user-navbar.component';
+import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
+
+
 
 @NgModule({
   declarations: [
@@ -36,11 +47,22 @@ import { AdminSendReminderComponent } from './components/admin-send-reminder/adm
     AdminGetEnrollmentsComponent,
     AdminViewPaymentsComponent,
     AdminClaimApprovalComponent,
-    AdminSendReminderComponent
+    AdminSendReminderComponent,
+    ChildRegistrationComponent,
+    UserChildrenComponent,
+    UserDashboardComponent,
+    UserSidebarComponent,
+    AdminSidebarComponent,
+    UserNavbarComponent,
+    AdminNavbarComponent,
+
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
