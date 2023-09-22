@@ -1,0 +1,186 @@
+
+<div class="newHealthClaim">
+
+
+
+
+    <h1>Add New Health Claim</h1>
+    <div class="container">
+      <!-- Enrollment Details -->
+      <form action="" (ngSubmit)="GetEnrollments(ChildId,1)">
+        <div class="col">
+    
+          <label>Select Child</label>
+
+          <select id="userRole" [(ngModel)]="ChildId" name="userRole" class="form-select">
+
+            <option *ngFor="let c of Childeren" value="{{c.childId}}">{{c.childName}}</option>
+
+          </select>
+
+          <button type="submit" class="btn btn-primary">Check Active Enrollments</button>
+        </div>
+        </form>
+  
+
+        <div *ngIf="enrollmentFound()">
+
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody >
+              
+            <tr >
+                <td>{{Enrollment.startDate}}</td>
+                <td>{{Enrollment.endDate}}</td>
+                <td>Active</td>
+                <td>
+                  <button  class="btn btn-primary active" (click) = "claimNow()">            
+                  Claim Now</button>
+                
+                </td>
+      
+            </tr >
+           
+        
+        </tbody>
+        </table>
+
+
+
+        </div>
+
+
+    
+    <div *ngIf="ClaimNow">
+    
+    <form action=""  (ngSubmit)="addHealthClaim()">
+      
+    
+    <!-- Hospital Details -->
+    
+        <div class="row">
+            <h3>Hospital Details</h3>
+          <div class="col">
+            <label>Incidence Date</label>
+            <input type="date" class="form-control" [(ngModel)]="healthClaim.incidenceDate" placeholder="Enter Incidence Date" name="incidenceDate">
+          </div>
+          
+          <div class="col">
+            <label>Hospital name</label>
+            <input type="text" class="form-control" [(ngModel)]="healthClaim.hospitalName" placeholder="Enter Hospital name" name="hospitalName">
+          </div>
+          
+      
+      
+
+        <div class="col">
+    
+          <label>Room category</label>
+
+          <select id="room" [(ngModel)]="healthClaim.roomCategory" name="room" class="form-control">
+  
+            
+
+            <option  value="Multibed Ward">Multibed Ward</option>
+            <option  value="Twin Sharing Room">Twin Sharing Room</option>
+            <option  value="Single Room">Single Room</option>
+            <option  value="Single Deluxe Room">Single Deluxe Room</option>
+            <option  value="Super Deluxe Room">Super Deluxe Room</option>
+
+          </select>
+
+          
+        </div>
+
+      </div>
+
+
+
+
+        <div class="row">
+            <div class="col">
+                <label>Reason</label>
+                <input type="text" class="form-control" [(ngModel)]="healthClaim.reason" placeholder="Enter Reason" name="reason">
+              </div>
+            <div class="col">
+                <label>Admit Date</label>
+              <input type="date" class="form-control" [(ngModel)]="healthClaim.admitDate" placeholder="Admit Date" name="admitDate">
+            </div>
+    
+            <div class="col">
+                <label>Discharge Date</label>
+                <input type="date"  class="form-control" [(ngModel)]="healthClaim.dischargeDate" placeholder="Discharge Date" name="dischargeDate">
+              </div>
+              
+          </div>
+    
+          <!-- Expense Details -->
+    
+    
+          <div class="row">
+            <h3>Expense Details</h3>
+            <div class="col" >
+                <label>Pre-hospital Expenses</label>
+                <input type="number" class="form-control" [(ngModel)]="healthClaim.preHospitalExpenses" placeholder="Pre-hospital expenses" name="Pre-hospital">
+              </div>
+            <div class="col">
+                <label>Hospital Expenses</label>
+              <input type="number" class="form-control" [(ngModel)]="healthClaim.hospitalExpenses" placeholder="Hospital Expenses" name="hospitalExpenses">
+            </div>
+    
+            <div class="col">
+                <label>Post Hospital Expenses</label>
+                <input type="number" class="form-control" [(ngModel)]="healthClaim.postHospitalExpenses" placeholder="Post Hospital Expenses" name="postHospitalExpenses">
+              </div>
+         
+         
+          <div class="col">
+            <label>Ambulance Expenses</label>
+            <input type="number" class="form-control" [(ngModel)]="healthClaim.ambulanceExpenses" placeholder="Ambulance Expenses" name="ambulanceExpenses">
+          </div>
+        </div>
+    
+    
+    
+         <!-- Expense Docs -->
+    
+         <!-- <div class="row">
+            <h3>Documents</h3>
+         <div class="col" >
+            <label>Hospital Bill </label>
+            <input type="file" class="form-control" name="hospitalBill">   
+        </div>
+        <div class="col" >
+            <label>Doctor's Prescribtion</label>
+            <input type="file" class="form-control" name="doctorPrescribtion">   
+        </div>
+    
+        <div class="col" >
+            <label>Discharge Documents</label>
+            <input type="file" class="form-control" name="dischargeDocuments">   
+        </div>
+    
+        <div class="col" >
+            <label>Ambulance Bill</label>
+            <input type="file" class="form-control" name="ambulanceBill">   
+        </div>
+    
+    
+    </div> -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    
+        
+      
+    
+      </form>
+    </div>
+
+    </div>
+    </div>

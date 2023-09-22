@@ -20,6 +20,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Import Router for navigation
+import { AuthService } from 'src/app/services/auth-service.service';
 import { ParentService } from 'src/app/services/parent.service';
 
 @Component({
@@ -45,10 +46,22 @@ export class UserRegistrationComponent implements OnInit {
   };
 
   
-  constructor(private parentService: ParentService, private router: Router) {}
+  constructor(private parentService: ParentService, private router: Router, private login:AuthService) {}
 
 
   ngOnInit() {}
+
+
+  onRegister(){
+
+
+    this.login.setRegister("false");
+
+  }
+
+
+
+
 
   onSubmit() {
 
@@ -69,6 +82,7 @@ export class UserRegistrationComponent implements OnInit {
         console.log('User registered successfully', response);
 
         // Redirect to the login page upon successful registration
+        this.login.setRegister("false");
         this.router.navigate(['/login']);
 
         alert('User registered successfully');

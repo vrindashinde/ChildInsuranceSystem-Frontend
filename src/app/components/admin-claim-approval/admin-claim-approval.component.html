@@ -1,1 +1,181 @@
-<p>admin-claim-approval works!</p>
+<div class="main">
+<h5>Select Claim Type</h5>
+
+<select id="claimType" [(ngModel)]="claimType" name="claimType" class="form-select " >
+
+    <option value="HealthClaim">Health Claims</option>
+
+    <option value="EducationClaim">Education Claims</option>
+
+  </select>
+
+<!-- Start Health Claim Div -->
+<div class="healthClaim" *ngIf="claimType=='HealthClaim'">
+
+<h3>Verify and Approve Health Claims</h3>
+<div class="container" *ngIf="healthClaim.length>0">
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th></th>
+            <th></th>
+            
+            
+        </tr>
+    </thead>
+    <tbody *ngFor="let h of healthClaim">
+      
+        <tr >
+            <td>{{h.claimDate}}</td> 
+            <td>{{h.totalExpenses}}</td>
+            <td>
+            <button *ngIf="h.ViewDetails != true" 
+            class="btn btn-primary active" (click) = "viewHealthClaimDetails(healthClaim.indexOf(h),h.healthClaimId)">            
+            View Details</button>
+            <button *ngIf="h.ViewDetails == true" 
+            class="btn btn-warning" (click) = "viewHealthClaimDetails(healthClaim.indexOf(h),h.healthClaimId)">            
+            Hide Details</button>
+        </td><td>
+            <input type="customMessage" class="form-control" [(ngModel)]="h.customMessage" placeholder="Comment for status update" name="customMessage">
+
+            <button class="btn btn-success active" (click)="approveHealthClaim(h.healthClaimId,h.customMessage)">Approve</button>
+        <button class="btn btn-danger active" (click)="declineHealthClaim(h.healthClaimId,h.customMessage)">Decline</button>
+        
+        
+        </td>
+          </tr>
+          <tr >
+            <td colspan="4" *ngIf="h.ViewDetails == true">
+            
+                  <div >
+                    <ul>
+                        <h4>Child Details: </h4>
+                    <li *ngIf="child.childId">Child Id: {{child.childId}}</li>
+                    <li *ngIf="child.childName">Child Name: {{child.childName}}</li>
+                    <li *ngIf="child.childUID">Child Adhaar: {{child.childUID}}</li>
+                    <h4>Incidence Details: </h4>
+                    <li *ngIf="h.incidenceDate">Incidence Date: {{h.incidenceDate}}</li>
+                    <li *ngIf="h.hospitalName">Hospital Name: {{h.hospitalName}}</li>
+                    <li *ngIf="h.roomCategory">Room Category: {{h.roomCategory}}</li>
+                    <li *ngIf="h.reason">Reason: {{h.reason}}</li>
+                    <li *ngIf="h.admitDate">Admit Date: {{h.admitDate}}</li>
+                    <li *ngIf="h.dischargeDate">Discharge Date: {{h.dischargeDate}}</li>
+                    <li *ngIf="h.preHospitalExpenses">Pre-Hospital Expenses: {{h.preHospitalExpenses}}</li>
+                    <li *ngIf="h.hospitalExpenses">Hospital Expenses: {{h.hospitalExpenses}}</li>
+                    <li *ngIf="h.postHospitalExpenses">Post Hospital Expenses: {{h.postHospitalExpenses}}</li>
+                    <li *ngIf="h.ambulanceExpenses">Ambulance Expenses: {{h.ambulanceExpenses}}</li>
+                    
+
+                    
+                    </ul>
+                        </div> 
+                    </td>
+        </tr>
+        
+   
+    </tbody>
+    </table>
+    </div>
+    
+    <div class="container" *ngIf="healthClaim.length == 0">
+        <h3>No Pending Health Claims for verification</h3>
+    </div>
+
+</div>
+<!-- End Health Claim Div -->
+
+
+<!-- Start Education Claim Div -->
+<div class="educationClaim" *ngIf="claimType=='EducationClaim'">
+
+    <h1>Verify and Approve Education Claims</h1>
+
+
+
+
+    <div class="container" *ngIf="educationClaim.length>0">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th></th>
+                <th></th>
+                
+           
+                
+                
+            </tr>
+        </thead>
+        <tbody *ngFor="let e of educationClaim">
+          
+            <tr >
+                <td>{{e.claimDate}}</td> 
+                <td>{{e.totalExpenses}}</td>
+                <td>
+
+            
+                    
+                <button *ngIf="e.ViewDetails != true" 
+                class="btn btn-primary active" (click) = "viewEducationClaimDetails(educationClaim.indexOf(e))">            
+                View Details</button>
+                <button *ngIf="e.ViewDetails == true" 
+                class="btn btn-warning" (click) = "viewEducationClaimDetails(educationClaim.indexOf(e))">            
+                Hide Details</button>
+            </td><td>
+                <input type="customMessage" class="form-control" [(ngModel)]="e.customMessage" placeholder="Comment for status update" name="customMessage">
+    
+                <button class="btn btn-success active" (click)="approveEducationClaim(e.educationClaimId,e.customMessage)" >Approve</button>
+            <button class="btn btn-danger active" (click)="declineEducationClaim(e.educationClaimId,e.customMessage)">Decline</button>
+            
+        
+            </td>
+              </tr>
+
+              <tr >
+                <td colspan="4" *ngIf="e.ViewDetails == true">
+                
+                      <div >
+                        <ul>
+                            <h4>Child Details: </h4>
+                        <li *ngIf="child.childId">Child Id: {{child.childId}}</li>
+                        <li *ngIf="child.childName">Child Name: {{child.childName}}</li>
+                        <li *ngIf="child.childUID">Child Adhaar: {{child.childUID}}</li>
+                        <h4>Incidence Details: </h4>
+    
+                        <td *ngIf="e.annualFee">Annual Fee: {{e.annualFee}}</td>
+                        <td *ngIf="e.transport">Transport Fee: {{e.transport}}</td>
+                        <td *ngIf="e.material">Education-material Fee: {{e.material}}</td>
+    
+                        
+                        </ul>
+                            </div> 
+                        </td>
+            </tr>
+
+
+            
+            
+       
+        </tbody>
+        </table>
+        </div>
+        
+        <div class="container" *ngIf="educationClaim.length == 0">
+            <h3>No Pending Education Claims for verification</h3>
+        </div>
+    
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- End Education Claim Div -->

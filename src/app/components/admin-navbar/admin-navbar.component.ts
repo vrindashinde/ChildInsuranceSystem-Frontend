@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AuthService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -8,9 +9,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class AdminNavbarComponent implements OnInit {
   @Output() sideNavToggled = new EventEmitter<boolean>();
   menuStatus: boolean = false;
-  constructor() { }
+  constructor(private logoutService: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    this.logoutService.logout()
+    console.log("cleared")
   }
 
 

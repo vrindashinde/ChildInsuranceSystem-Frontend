@@ -1,1 +1,54 @@
-<p>admin-get-enrollments works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-9">
+                        <h3>Enrollments</h3>
+                    </div>
+                    <div class="col-md-3 text-end">
+                        <button class="btn btn-primary" (click)="fetchEnrollments()">Get Enrollments</button>
+                    </div>
+                </div>
+
+                <table class="table"> 
+                    <thead>
+                        <tr>
+                            <!-- <th>Child ID</th> -->
+                            <th>Policy Name</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Policy Enrollment ID</th>
+                            <th>Amount Paid</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>                       
+                        <tr *ngFor="let item of enrollmentData">
+                            <!-- <td>{{ item.childId }}</td> -->
+                            <td>{{ item.policyName }}</td>
+                            <td>{{ item.startDate }}</td>
+                            <td>{{ item.endDate }}</td>
+                            <td>{{ item.policyEnrollmentId }}</td>
+                            <td>{{ item.amountPaid | currency:'USD':'symbol':'1.2-2' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+

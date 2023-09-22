@@ -1,110 +1,239 @@
+<div class="page-background">
+
+ 
+
+  <div class="position-absolute top-0 end-0 p-3">
+
+<form (ngSubmit)="onRegister()" #loginForm="ngForm" style="margin-left: 1200px; margin-right: 40px;">
+
+  <p>Already have an account?</p>
+
+  <button type="submit" class="btn btn-dark">Login</button>
+
+</form>
+
+</div>
+
+ 
+
 <div class="form-container mt-5">
+
   <h2 style="text-align: center; margin-bottom: 20px; color: #263859;">User Registration</h2>
+
   <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+
     <!-- User Information -->
+
     <div class="form-group">
+
       <label for="firstName">First Name</label>
+
       <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName" name="firstName" required pattern="^[A-Za-z]{2,50}$">
+
       <div *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)">
+
       <div *ngIf="userForm.controls['firstName'].invalid && userForm.controls['firstName'].touched" class="alert alert-danger">
+
         <p>First Name is required and should consist of 2 to 50 characters (letters only).</p>
+
       </div>
+
     </div>
+
   </div>
 
+ 
+
     <div class="form-group">
+
       <label for="lastName">Last Name</label>
+
       <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name="lastName" required pattern="^[A-Za-z]{2,50}$">
+
       <div *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)">
+
       <div *ngIf="userForm.controls['lastName'].invalid && userForm.controls['lastName'].touched" class="alert alert-danger">
+
         <p>Last Name is required and should consist of 2 to 50 characters (letters only).</p>
+
       </div>
-    </div>
+
     </div>
 
+    </div>
+
+ 
+
     <div class="form-group">
+
       <label for="adhaar">Aadhar Number</label>
+
       <input type="text" class="form-control" id="adhaar" [(ngModel)]="user.adhaar" name="adhaar" required pattern="^[0-9]{12}$">
+
       <div *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)">
+
       <div *ngIf="userForm.controls['adhaar'].invalid && userForm.controls['adhaar'].touched" class="alert alert-danger">
+
         <p>Aadhar Number is required and should consist of 12 digits.</p>
+
       </div>
-    </div>
+
     </div>
 
+    </div>
+
+ 
+
     <div class="form-group">
+
       <label for="address">Address</label>
+
       <textarea class="form-control" id="address" [(ngModel)]="user.address" name="address" rows="4" required></textarea>
+
       <div *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)">
+
       <div *ngIf="userForm.controls['address'].invalid && userForm.controls['address'].touched" class="alert alert-danger">
+
       <p>Address is required.</p>
+
       </div>
-    </div>
+
     </div>
 
+    </div>
+
+ 
+
     <div class="form-group">
+
       <label for="phone">Phone Number</label>
+
       <input type="tel" class="form-control" id="phone" [(ngModel)]="user.phone" name="phone" required pattern="^((\\+91-?)|0)?[0-9]{10}$">
+
       <div *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)">
+
       <div *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].touched" class="alert alert-danger">
+
       <p>Phone Number is required and should match the pattern (10 digits).</p>
+
       </div>
-    </div>
+
     </div>
 
+    </div>
+
+ 
+
     <div class="form-group">
+
       <label for="email">Email</label>
+
       <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
       <div *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)">
+
       <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="alert alert-danger">
+
       <p>Email is required and should be a valid email address.</p>
+
       </div>
+
     </div>
+
     </div>
+
+ 
 
       <div class="form-group">
+
         <label for="password">Password</label>
+
         <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$">
+
         <div *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)">
+
         <div *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].touched" class="alert alert-danger">
+
         <p>Password is required and should match the pattern (6-12 characters, at least one lowercase letter, one uppercase letter, and one digit).</p>
+
         </div>
-      </div>
+
       </div>
 
+      </div>
+
+ 
+
     <div class="form-group">
+
       <label for="bankName">Bank Name</label>
+
       <input type="text" class="form-control" id="bankName" [(ngModel)]="user.bankName" name="bankName" required pattern="^[[A-Za-z ]{2,50}$">
+
       <div *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)">
+
       <div *ngIf="userForm.controls['bankName'].invalid && userForm.controls['bankName'].touched" class="alert alert-danger">
+
       <p>Bank Name is required and should be between 2 to 50 characters (letters, spaces allowed).</p>
+
       </div>
-    </div>
+
     </div>
 
+    </div>
+
+ 
+
     <div class="form-group">
+
       <label for="accountNumber">Account Number</label>
+
       <input type="text" class="form-control" id="accountNumber" [(ngModel)]="user.accountNumber" name="accountNumber" required pattern="^[0-9]{9,18}$">
+
       <div *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)">
+
       <div *ngIf="userForm.controls['accountNumber'].invalid && userForm.controls['accountNumber'].touched" class="alert alert-danger">
+
       <p>Account Number is required and should be between 9 to 18 digits.</p>
+
       </div>
+
     </div>
+
     </div>
+
+ 
 
     <div class="form-group">
+
       <label for="ifscCode">IFSC Code</label>
+
       <input type="text" class="form-control" id="ifscCode" [(ngModel)]="user.ifscCode" name="ifscCode" required pattern="^[A-Z]{4}[0-9]{7}$">
+
       <div *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)">
+
       <div *ngIf="userForm.controls['ifscCode'].invalid && userForm.controls['ifscCode'].touched" class="alert alert-danger">
+
       <p>IFSC Code is required and should be in the format: ABCD0123456.</p>
+
       </div>
-    </div>
+
     </div>
 
-    <button type="submit" class="btn btn-primary" (click)="onSubmit">Submit</button>
+    </div>
+
+ 
+
+    <button type="submit" class="btn btn-dark" (click)="onSubmit">Submit</button>
+
   </form>
 
+ 
 
+</div>
+
+ 
+
+<br><br>
 
 </div>

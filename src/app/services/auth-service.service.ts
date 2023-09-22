@@ -11,31 +11,67 @@ import { Parent } from '../classes/Parent';
 })
 export class AuthService {
 
-  userLoggedIn:boolean=false;
+  userLoggedIn:string="false";
   userRole:string = "user";
+  register:string = "false";
 
 
 
-getUserLoggedIn():boolean{
-  return this.userLoggedIn
+/////
+getUserLoggedIn():string | any{
+
+  return localStorage.getItem('userLoggedIn')
+
 }
 
-setUserLoggedIn(userLoggedIn:boolean):void{this.userLoggedIn = userLoggedIn}
+ 
 
+setUserLoggedIn(userLoggedIn:string):void{
+
+  this.userLoggedIn = userLoggedIn
+
+localStorage.setItem('userLoggedIn',(this.userLoggedIn))
+
+}
+
+logout(){
+  localStorage.removeItem('userLoggedIn')
+  localStorage.removeItem('userRole')
+}
+
+
+
+////////
+getRegister():string | any{
+  return localStorage.getItem('register')
+}
+
+setRegister(register:string):void{
+  this.register = register
+  localStorage.setItem('register',(this.register))
+}
 
 
 ///////////////
-getUserRole():string{
-  return this.userRole
+getUserRole():string| any{
+
+  return localStorage.getItem('userRole')
+
 }
 
-setUserRole(userRole:string):void{this.userRole = userRole}
+ 
 
+setUserRole(userRole:string):void{
 
+  this.userRole = userRole
 
+localStorage.setItem('userRole',(this.userRole))
 
+ 
 
-/////////
+}
+
+//////////////
 
 constructor(private http: HttpClient) { }
 
@@ -43,7 +79,7 @@ constructor(private http: HttpClient) { }
   login(parentlogin: Parent):Observable<any>{
 
     
-    return this.http.post("http://localhost:8080/api/v1/user/parent/login", parentlogin);
+    return this.http.post("http://localhost:8090/api/v1/user/parent/login", parentlogin);
     
   }
 

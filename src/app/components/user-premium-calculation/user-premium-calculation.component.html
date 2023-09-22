@@ -1,1 +1,56 @@
 <p>user-premium-calculation works!</p>
+<div class="container mt-5">
+    <h1 class="text-center">Premium Calculation</h1>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+        <div class="input-container">
+        <label for="cover">Cover Amount</label>
+       
+        <select id="cover" name="cover" placeholder="cover" [(ngModel)]="cover">
+            <option value="3">3 Lakh</option>
+            <option value="5">5 Lakh</option>
+            <option value="10">10 Lakh</option>
+        </select></div>
+        <div class="input-container">
+            <label for="duration">Duration</label>
+            <select id="duration" name="duration" placeholder="duration" [(ngModel)]="duration">
+                <option value="3">3 Years</option>
+                <option value="5">5 Years</option>
+                <option value="10">10 Years</option>
+            </select><br><br>
+        </div>
+        <div class="input-container">
+
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" [(ngModel)]="age" placeholder="age">
+        </div>
+        <div class="input-container">
+            <label for="annual_income">Annual Income</label>
+            <input type="number" id="annual_income" name="annual_income" [(ngModel)]="annual_income"
+                placeholder="Annual Income">
+        </div>
+        <div class="input-container">
+            <h3>Gender:</h3>
+            <label><input type="radio" name="gender" value="male"> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+            <label><input type="radio" name="gender" value="other"> Other</label>
+        </div>
+        <button (click)="calculatePremium()" >Calculate Premium</button>
+        <div class="total" *ngIf="premium !== undefined">
+            <p>Total: {{premium | number :'1.0-0'}}</p>
+            <div class="premium-container"></div>
+
+            <!-- <form #payform='ngForm' (ngSubmit)="payment(payform)"> -->
+
+                <button (click)="navigateToPayment()" type="submit" >Proceed to Pay</button>
+   
+                <!-- <div class="alert alert-success" role="alert">
+                    <p>if your payment has been successful click on this button</p>
+                    <button (click)="addPayment()" type="submit">successful PAYMENT</button>
+                  </div> -->
+        <!-- </div> -->
+
+        <!-- </div>
+    </form>  
+ </div> -->

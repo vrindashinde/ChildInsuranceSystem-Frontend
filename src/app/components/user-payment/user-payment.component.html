@@ -1,1 +1,14 @@
-<p>user-payment works!</p>
+<div class="container mt-5">
+    <h1 class="text-center">PAYMENT</h1>
+    <div class="row">
+        <div class="input-container" >
+            <p align="center">You need to pay {{this.premium}}</p>
+            </div>
+            <form #payform='ngForm' (ngSubmit)="payment(payform)">
+
+                <button style= "margin-left: 420px;" type="submit" >Payment</button>
+            </form>
+
+        </div>
+        </div>
+   

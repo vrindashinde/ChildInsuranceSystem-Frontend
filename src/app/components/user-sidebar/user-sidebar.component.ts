@@ -21,37 +21,19 @@ export class UserSidebarComponent implements OnInit {
     {
       number:'2',
       name: 'Profile',
-      route: '#',
+      route: '/user-profile',
       icon:'fa-solid fa-user'
     },
     {
       number:'3',
-      name: 'Policies',
-      route: '#',
+      name: 'Enrollments',
+      route: 'userenrollment',
       icon:'fa-solid fa-shield-halved'
     },
     {
       number:'4',
-      name: 'Calculate Premium',
-      route: '#',
-      icon:'fa-solid fa-calculator'
-    },
-    {
-      number:'5',
-      name: 'Childeren',
-      route: '#',
-      icon:'fa-solid fa-hands-holding-child'
-    },
-    {
-      number:'6',
-      name: 'Payments',
-      route: '#',
-      icon:'fa-solid fa-credit-card'
-    },
-    {
-      number:'7',
       name: 'Claims',
-      route: '#',
+      route: 'user-claims',
       icon:'fa-solid fa-file-invoice'
     },
 

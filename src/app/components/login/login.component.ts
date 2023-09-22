@@ -73,6 +73,14 @@ export class LoginComponent implements OnInit {
   }
 
 
+  onRegister(){
+    this.login.setRegister("true");
+
+  }
+
+
+
+
 
   onSubmit() {
     if(this.selectedRole == "user"){
@@ -100,15 +108,15 @@ this.parentlogin.password= this.user.password;
          this.message="Logged In Sucessfully";
          this.errorMessage="";
 
-         this.login.setUserLoggedIn(true);
+         this.login.setUserLoggedIn("true");
          this.login.setUserRole("user");
 
          this.router.navigate(['/user-dashboard']);
-
-        this.loggedInService.setData(this.loggedinParent);
+         data.password="";
+        this.loggedInService.setData(data);
        
 
-        alert('User Logged In successfully');
+        
 
 
        },        //Response from restcontroller which sends success httpCode eg 200
@@ -158,7 +166,7 @@ this.newAdmin.password= this.user.password;
 
          this.router.navigate(['/admin-dashboard']);
        
-         this.login.setUserLoggedIn(true);
+         this.login.setUserLoggedIn("true");
          this.login.setUserRole("admin");
          
         this.loggedInService.setData(this.newAdmin);
@@ -177,7 +185,10 @@ this.newAdmin.password= this.user.password;
        }//handle restControllerAdvice which sends error httpCode eg 404
 
     });
+
+ 
   }
+
 
 
 
@@ -216,6 +227,12 @@ this.newAdmin.password= this.user.password;
     //     // Optionally, display an error message to the user
     //   }
     // );
+
+    navigateToDashboard(){
+
+      this.router.navigate(['dashboard']);
+  
+    } 
   
   }
 

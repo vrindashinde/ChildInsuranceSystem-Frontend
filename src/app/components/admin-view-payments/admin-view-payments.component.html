@@ -1,1 +1,21 @@
-<p>admin-view-payments works!</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th>payment_id</th>
+          <th>amount_paid</th>
+          <th>payment-date</th>
+          <th>Enrollment_id(Details)</th>
+        </tr>
+      </thead>
+      <tbody>
+    <tr *ngFor="let p of paymentDetail">
+        <td>{{p.paymentId}}</td>
+        <td>{{p.amountPaid}}</td>
+        <td>{{p.paymentDate}}</td>
+        <td>{{p.enrollment_id}}</td>
+    </tr >
+</tbody>
+</table>
+
+

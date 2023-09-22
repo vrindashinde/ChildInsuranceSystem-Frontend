@@ -9,11 +9,15 @@ export class LogedinService {
   ) { }
   getData():any{
 
-    return this.data;
+    return localStorage.getItem('userDetails');
 
   }
 
-setData(data:any):void{this.data = data;}
+setData(data:any):void{
+  this.data = data;
+  localStorage.setItem('userDetails',JSON.stringify(this.data))
+
+}
 
 
 }

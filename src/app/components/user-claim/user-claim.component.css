@@ -1,0 +1,36 @@
+.userClaim{
+ 
+    position: absolute;
+   
+   
+    
+  }
+  
+  
+  .table {
+     width: 1000px;
+      
+    }
+  
+  
+    .addClaim{
+      text-align: right;
+    }
+  
+    .btn-success {
+      font-size: 20px;
+      padding: 10px; 
+    }
+  
+    .dropdown{
+      padding: 10px;
+    }
+
+    h2{
+      text-align: center;
+    }
+
+    h5{
+      text-align: center;
+    }
+  

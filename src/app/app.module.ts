@@ -18,6 +18,7 @@ import { AdminGetEnrollmentsComponent } from './components/admin-get-enrollments
 import { AdminViewPaymentsComponent } from './components/admin-view-payments/admin-view-payments.component';
 import { AdminClaimApprovalComponent } from './components/admin-claim-approval/admin-claim-approval.component';
 import { AdminSendReminderComponent } from './components/admin-send-reminder/admin-send-reminder.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { ChildRegistrationComponent } from './components/child-registration/child-registration.component';
 import { UserChildrenComponent } from './components/user-children/user-children.component';
@@ -27,7 +28,13 @@ import { UserSidebarComponent } from './components/user-sidebar/user-sidebar.com
 import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
 import { UserNavbarComponent } from './components/user-navbar/user-navbar.component';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
-
+import { UserEnrollmentsAfterpaymentComponent } from './components/user-my-enrollments/user-my-enrollments.component';
+import { EndowmentPremiumCalculationComponent } from './components/endowment-premium-calculation/endowment-premium-calculation.component';
+import { UserViewallpaymentsComponent } from './components/user-viewallpayments/user-viewallpayments.component';
+import { HealthClaimComponent } from './components/health-claim/health-claim.component';
+import { EducationClaimComponent } from './components/education-claim/education-claim.component';
+import { EndowmentClaimComponent } from './components/endowment-claim/endowment-claim.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -55,12 +62,21 @@ import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.com
     AdminSidebarComponent,
     UserNavbarComponent,
     AdminNavbarComponent,
+    
+    UserEnrollmentsAfterpaymentComponent,
+         EndowmentPremiumCalculationComponent,
+         UserViewallpaymentsComponent,
+         HealthClaimComponent,
+         EducationClaimComponent,
+         EndowmentClaimComponent,
+         UserProfileComponent,
 
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule
   ],

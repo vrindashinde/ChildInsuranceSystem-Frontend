@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { ChildrenService } from 'src/app/services/children.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router'; // Import Router for navigation
+import { LogedinService } from 'src/app/services/logedin.service';
 
 
 @Component({
@@ -10,12 +11,15 @@ import { Router } from '@angular/router'; // Import Router for navigation
   styleUrls: ['./child-registration.component.css'],
 })
 export class ChildRegistrationComponent implements OnInit {
-  constructor(private childrenService: ChildrenService, private router: Router) {}
+  constructor(private childrenService: ChildrenService, private router: Router, private localStorage: LogedinService) {}
 
   childData = {
     name: '',
     age: 0,
   };
+
+  parentData: any;
+  parentId:number = 0;
 
   @ViewChild('childForm', { static: false }) childForm!: NgForm; // Reference to the form
 
@@ -82,15 +86,20 @@ export class ChildRegistrationComponent implements OnInit {
       return;
     }
 
-    const parentId = 1; // Replace with the actual parent ID
+    // const parentId = 1; // Replace with the actual parent ID
+this.parentData = JSON.parse(this.localStorage.getData());
 
-    this.childrenService.addChildByParentId(parentId, this.child).subscribe(
+this.parentId = this.parentData.parentId;
+     
+console.log(this.parentId);
+    this.childrenService.addChildByParentId(this.parentId, this.child).subscribe(
       (response: any) => {
+
         console.log('Data posted successfully:', response);
         // // Optionally, you can reset the form data here
         // this.childForm.resetForm();
 
-        this.router.navigate(['/user-children']);
+        this.router.navigate(['/user-dashboard']);
 
         alert('Child registered successfully');
 
@@ -101,4 +110,12 @@ export class ChildRegistrationComponent implements OnInit {
       }
     );
   }
+
+  navigateToDashboard(){
+
+    this.router.navigate(['user-dashboard']);
+
+  } 
+
+  
 }

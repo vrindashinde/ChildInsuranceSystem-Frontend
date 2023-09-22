@@ -10,18 +10,29 @@ export class AdminSidebarComponent implements OnInit {
   @Input() sideNavStatus: boolean = false;
 
   list = [
+    
     {
       number:'1',
-      name: 'Dashboard',
-      route: '/dashboard',
-      icon:'fa-solid fa-house'
-    },
-    {
-      number:'2',
-      name: 'Profile',
-      route: '/profile',
+      name: 'Policies',
+      route: '/adminpolicycrud',
       icon:'fa-solid fa-user'
     }
+    ,
+    {
+      number:'2',
+      name: 'Payments',
+      route: '/admin/payments',
+      icon:'fa-solid fa-user'
+    }
+    ,
+    {
+      number:'3',
+      name: 'Approve Claims',
+      route: '/admin/approve-claims',
+      icon:'fa-solid fa-user'
+    }
+
+
   ];
   constructor() { }
 

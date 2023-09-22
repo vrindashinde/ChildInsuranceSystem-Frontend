@@ -1,1 +1,207 @@
-<p>user-claim works!</p>
+<div class="userClaim">
+
+
+    <div class="addClaim">
+        
+        <div class="dropdown">
+            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown">
+              Make a new Claim
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/new-health-claim">Health Claim</a></li>
+              <li><a class="dropdown-item" href="/new-education-claim">Education Claim</a></li>
+              <li><a class="dropdown-item" href="/new-endowment-claim">Endowment Claim</a></li>
+            </ul>
+          </div>
+    
+    </div>
+
+<!-- 
+     <form action="" (ngSubmit)="GetEnrollments(ChildId)">
+        <div class="col">
+    
+          <label>Select Child</label>
+
+          <select id="userRole" [(ngModel)]="ChildId" name="userRole" class="form-select">
+
+            <option *ngFor="let c of Childeren" value="{{c.childId}}">{{c.childName}}</option>
+
+          </select>
+
+          <button type="submit" class="btn btn-primary">Check Active Enrollments</button>
+        </div>
+        </form>
+  
+     -->
+    
+    <h2>Education Claims</h2>
+    
+    <div class="container"  *ngIf="educationClaim.length>0">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let e of educationClaim">
+          
+        <tr >
+            <td>{{e.claimDate}}</td>
+            <td>{{e.annualFee}}</td>
+            <td>{{e.approval}}</td>
+       
+            <td>
+                <button *ngIf="e.ViewDetails != true" 
+                class="btn btn-primary active" (click) = "viewEducationClaimDetails(educationClaim.indexOf(e))">            
+                View Details</button>
+                <button *ngIf="e.ViewDetails == true" 
+                class="btn btn-warning" (click) = "viewEducationClaimDetails(educationClaim.indexOf(e))">            
+                Hide Details</button>
+    
+            </td>
+    
+       
+        </tr >
+        <tr >
+            <td colspan="4" *ngIf="e.ViewDetails == true">
+            <div>
+                <ul>
+                <li>Institute Name: = {{e.instituteName}}</li>
+                <li>Annual Fee = {{e.annualFee}}</li>
+                <li *ngIf="e.customMessage">Message = {{e.customMessage}}</li>
+                </ul>
+                    </div> 
+            </td>
+        </tr>
+            
+    
+    </tbody>
+    </table>
+    </div>
+    
+    <div class="container" *ngIf="educationClaim.length == 0">
+        <h5>No Education Claims to display</h5>
+    </div>
+    
+    <h2>Health Claims</h2>
+    <div class="container" *ngIf="healthClaim.length>0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let h of healthClaim">
+          
+            <tr >
+                <td>{{h.claimDate}}</td> 
+                <td>{{h.totalExpenses}}</td>
+                <td>{{h.approval}}</td>
+                <td>
+                <button *ngIf="h.ViewDetails != true" 
+                class="btn btn-primary active" (click) = "viewHealthClaimDetails(healthClaim.indexOf(h))">            
+                View Details</button>
+                <button *ngIf="h.ViewDetails == true" 
+                class="btn btn-warning" (click) = "viewHealthClaimDetails(healthClaim.indexOf(h))">            
+                Hide Details</button>
+            
+            
+            </td>
+              </tr>
+              <tr >
+                <td colspan="4" *ngIf="h.ViewDetails == true">
+                
+                      <div >
+                        <ul>
+                        <li>Incidence Date: {{h.incidenceDate}}</li>
+                        <li>Hospital Name: {{h.hospitalName}}</li>
+                        <li>Room Category: {{h.roomCategory}}</li>
+                        <li>Reason: {{h.reason}}</li>
+                        <li>Admit Date: {{h.admitDate}}</li>
+                        <li>Discharge Date: {{h.dischargeDate}}</li>
+                        <li>Pre-Hospital Expenses: {{h.preHospitalExpenses}}</li>
+                        <li>Hospital Expenses: {{h.hospitalExpenses}}</li>
+                        <li>Post Hospital Expenses: {{h.postHospitalExpenses}}</li>
+                        <li>Ambulance Expenses: {{h.ambulanceExpenses}}</li>
+                        <li *ngIf="h.customMessage">Message = {{h.customMessage}}</li>
+                        
+                        </ul>
+                            </div> 
+                        </td>
+            </tr>
+          
+        </tbody>
+        </table>
+        </div>
+        
+        <div class="container" *ngIf="healthClaim.length == 0">
+            <h5>No Health Claims to display</h5>
+        </div>
+    
+    
+        <h2>Endowment Claim</h2>
+    
+    
+        <div class="container" *ngIf="endowmentClaim.length>0">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let en of endowmentClaim">
+              
+                <tr >
+                    <td>{{en.claimDate}}</td> 
+                    <td>{{en.coverAmount}}</td>
+                    <td>{{en.approval}}</td>
+                    <td>
+                    <button *ngIf="en.ViewDetails != true" 
+                    class="btn btn-primary active" (click) = "viewEndowmentClaimDetails(endowmentClaim.indexOf(en))">            
+                    View Details</button>
+                    <button *ngIf="en.ViewDetails == true" 
+                    class="btn btn-warning" (click) = "viewEndowmentClaimDetails(endowmentClaim.indexOf(en))">            
+                    Hide Details</button>
+                
+                
+                </td>
+                  </tr>
+                  <tr >
+                    <td colspan="4" *ngIf="en.ViewDetails == true">
+                    
+                          <div >
+                            <ul>
+                                <li>Child Age: {{en.childAge}}</li>
+                                <li>Message: {{en.customMessage}}</li>
+                            
+                            </ul>
+                                </div> 
+                            </td>
+                </tr>
+              
+            </tbody>
+            </table>
+            </div>
+            
+            <div class="container" *ngIf="endowmentClaim.length == 0">
+                <h5>No Endowment Claims to display</h5>
+            </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>

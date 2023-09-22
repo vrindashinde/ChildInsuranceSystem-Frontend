@@ -10,18 +10,25 @@ import { AuthService } from './services/auth-service.service';
 export class AppComponent implements OnInit{
   userLoggedin:boolean;
   userRole:string;
+  register:boolean;
 
   constructor( private login:AuthService) {
 
     this.userLoggedin = this.login.getUserLoggedIn();
     this.userRole = this.login.getUserRole();
+    this.register = this.login.getRegister();
   
   }
   ngOnInit(): void {
   }
 
   checkLoginStatus():boolean{
-    return this.login.getUserLoggedIn();
+    if (this.login.getUserLoggedIn()=="true"){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
   checkRole():boolean{
@@ -34,6 +41,17 @@ else{
 
 
   }
+
+  checkRegister():boolean{
+    if (this.login.getRegister()=="true"){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  
   
   title = 'ChildInsuranceSystem';
   sideNavStatus: boolean = false;

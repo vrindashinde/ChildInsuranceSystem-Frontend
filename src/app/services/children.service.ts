@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ChildrenService {
-  private baseUrl = 'http://localhost:8080/api/v1/parents'; // Replace with your backend API URL
+  private baseUrl = 'http://localhost:8090/api/v1/parents'; // Replace with your backend API URL
 
-  private baseUrlofParent = 'http://localhost:8080/api/v1/user';
+  private baseUrlofParent = 'http://localhost:8090/api/v1/user';
 
   constructor(private http: HttpClient) { }
 

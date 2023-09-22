@@ -1,0 +1,31 @@
+Css file of admin crud
+.container {
+    margin-top: 20px;
+}
+
+
+.card {
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    width: 100%;
+}
+h2,h3{
+    text-align: center;
+  margin-top: 20px; 
+}
+tr:hover td {
+    background-color: #26a9ba;
+    opacity: 0.7;
+}
+
+
+
+

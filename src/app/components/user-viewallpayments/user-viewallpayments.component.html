@@ -1,0 +1,20 @@
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th>payment_id</th>
+          <th>amount_paid</th>
+          <th>payment-date</th>
+        </tr>
+      </thead>
+      <tbody>
+    <tr *ngFor="let p of paymentDetail">
+        <td>{{p.paymentId}}</td>
+        <td>{{p.amountPaid}}</td>
+        <td>{{p.paymentDate}}</td>
+    </tr >
+</tbody>
+</table>
+
+
+

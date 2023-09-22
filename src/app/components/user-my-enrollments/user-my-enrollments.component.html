@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Enrollment Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        
+        <form class="enrollment-form" [formGroup]="enrollmentForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <h6>* Indicates a required field</h6>
+                <label for="policyDuration">Policy Duration<span class="text-danger">*</span></label>
+                <select class="form-control" id="policyDuration" name="policyDuration" formControlName="policyDuration">
+                    <option value="">Select policy duration in years</option>
+                    <option value="3">3 </option>
+                    <option value="5">5 </option>
+                    <option value="10">10 </option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button> 
+        </form>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <label for="startDate" class="col-form-label">Start Date of Policy</label>
+            <input type="text" class="form-control" id="startDate" name="startDate" [(ngModel)]="startDate" readonly>
+        </div>
+    </div>
+    
+    
+    <div class="form-group">
+        <div class="col-sm-3">
+            <label for="startDate" class="col-form-label">End Date of Policy</label>
+            <input type="text" class="form-control" id="startDate" name="startDate" [(ngModel)]="endDate" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="message"></label>
+        <div id="message">{{ message }}</div>
+    </div>
+</body>
+</html>

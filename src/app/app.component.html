@@ -27,7 +27,7 @@
 
     <app-user-sidebar [sideNavStatus]="sideNavStatus" [ngClass]="{'app-user-sidebar-open':sideNavStatus}"></app-user-sidebar>
     <div class="display-area" [ngClass] = "{'display-area-shrink': sideNavStatus}">
-        <p>Main Display Area</p>
+        
         <router-outlet></router-outlet>
     </div>
 
@@ -38,12 +38,17 @@
 
     <app-admin-sidebar [sideNavStatus]="sideNavStatus" [ngClass]="{'app-admin-sidebar-open':sideNavStatus}"></app-admin-sidebar>
     <div class="display-area" [ngClass] = "{'display-area-shrink': sideNavStatus}">
-        <p>Main Display Area</p>
+       
         <router-outlet></router-outlet>
     </div>
 </main>
 
-<main *ngIf="!checkLoginStatus()">
+<main *ngIf="!checkLoginStatus() && !checkRegister()">
 <app-login ></app-login>
 
 </main>
+
+<main *ngIf="checkRegister()">
+  <app-user-registration></app-user-registration>
+  
+  </main>
